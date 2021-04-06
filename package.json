@@ -1,0 +1,29 @@
+{
+  "name": "webdev-starter",
+  "version": "0.0.4",
+  "description": "Boilerplate template for web apps and sites",
+  "main": "index.js",
+  "repository": "https://github.com/cxxiii/webdev-starter",
+  "author": "Nikolay Rademacher",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "lint": "if [ -f .eslintrc.* ]; then eslint . --fix; else yarn setup:eslint && eslint . --fix; fi",
+    "clean": "if [ -d build/ ]; then rm -r build/; fi",
+    "setup:react": "yarn add react react-dom && if [ ! -f src/App.jsx ]; then printf 'import React from \"react\";\n\nconst App = () => <p>Hello, React.</p>;\n\nexport default App;\n\n' > src/App.jsx; fi && mv src/index.js src/index.jsx && printf 'import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport App from \"./App\";\n\nReactDOM.render(<App />, document.getElementById(\"root\"));\n'$'\n'\"$(cat src/index.jsx)\" > src/index.jsx",
+    "setup:eslint": "yarn add -D eslint && eslint --init",
+    "eject:tailwind": "if [ -f tailwind.config.js ]; then yarn remove postcss postcss-cli tailwindcss autoprefixer && rm postcss.config.js tailwind.config.js; fi && printf '*,\n*::before,\n*::after {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}' > src/index.css"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-build-script": "^2.1.0",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "snowpack": "^3.2.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.5",
+    "tailwindcss": "^2.0.4"
+  }
+}
