@@ -3,54 +3,66 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>Hello, world</title>
+    <title>Farsight</title>
     <link rel="stylesheet" href="index.css" />
-    <script type="module" src="index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
   </head>
   <body
-    class="md:container md:mx-auto text-center text-lg text-white font-extralight bg-gradient-to-r from-purple-500 to-blue-300 subpixel-antialiased"
+    class="grid content-center h-screen text-gray-900 text-center textShadow-sm subpixel-antialiased"
   >
-    <header>
-      <h1 class="mt-12 text-6xl font-mono font-light tracking-tight">
-        Hello, world.<span class="animate-pulse font-thin text-7xl">|</span>
+    <header class="grid-center">
+      <h1 id="title" class="mb-5 font-heading text-6xl textShadow-lg">
+        Farsight
       </h1>
+      <h2 id="subtitle" class="mb-4 text-center">
+        Discover new places and see whether the current Covid situation allows a
+        visit.
+      </h2>
+
+      <form autocomplete="off">
+        <input
+          type="text"
+          class="mt-0 block text-center text-xl px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+          placeholder="Enter a place"
+          required
+        />
+        <button
+          class="mt-5 text-white text-lg bg-gray-900 hover:bg-white hover:text-gray-900 border-2 border-gray-900 border-solid font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Discover
+        </button>
+      </form>
     </header>
-    <main
-      class="h-full w-full md:container md:mx-auto my-20 px-12 leading-loose"
-    >
-      <p class="mb-12">
-        This is a simple, light-weight boilerplate for getting you started
-        quickly with your next
-        <span class="text-purple-600 text-xl font-medium">#webdev 👩🏻‍💻 </span>
-        project.
-      </p>
-      <p class="mb-12">
-        The idea is to enable you to dive right in on a project idea with zero
-        time spent on config, yet with all the essential
-        <span class="text-purple-600 text-xl font-medium">#DX 👌🏽</span>
-        features, such as hot reloading and optimized production builds.
-      </p>
-      <p class="mb-12">
-        To get started, simply start editing this
-        <span class="font-mono tracking-tight">index.html</span> file, while
-        using
-        <span class="text-purple-600 text-xl font-medium">#TailwindCSS</span> to
-        add some breezy <span class="text-2xl">💅🏿</span> gloss.
-      </p>
-      <p class="mb-12">
-        You don't have to use any JS framework/library, but if you fancy
-        <span class="text-purple-600 text-xl font-medium"
-          >#ReactJS
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png"
-            alt="React icon"
-            class="inline-block animate-spin w-10 -ml-1" /></span
-        >, you can turn this boilerplate into a React app by running
-        <span class="font-mono tracking-tight">yarn setup:react</span>.
-      </p>
-      <p>Now go and build something. <span class="text-3xl ml-1">💪</span></p>
+    <main class="grid-center w-full" id="container" hidden>
+      <h2
+        class="mb-5 font-heading text-5xl textShadow-lg"
+        id="destination"
+      ></h2>
+      <section id="weather" class="grid-center w-full mb-4"></section>
+      <section id="venues" class="grid-center w-full"></section>
     </main>
-    <!-- Entry point for React below. Feel free to delete if you won't use it -->
-    <div id="root"></div>
+    <footer class="text-center text-xs mt-8 mb-2" hidden>
+      Made with <span class="text-red-500">♥</span> in Bielefeld by
+      <a class="hover:underline" href="https://nikolayrademacher.net" target="_blank"
+        >Nikolay Rademacher</a
+      >
+    </footer>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

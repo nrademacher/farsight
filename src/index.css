@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.textShadow-lg {
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0 6px;
+}
+
+.textShadow-md {
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0 4px;
+}
+
+.textShadow-sm {
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0 2px;
+}

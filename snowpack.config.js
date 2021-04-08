@@ -2,12 +2,7 @@ module.exports = {
   mount: {
     src: "/",
   },
-  plugins: [
-    [
-      "@snowpack/plugin-build-script",
-      { cmd: "postcss", input: [".css"], output: [".css"] },
-    ],
-  ],
+  plugins: [["@snowpack/plugin-postcss"], ["@snowpack/plugin-dotenv"]],
   optimize: {
     bundle: true,
     minify: true,
