@@ -1,6 +1,5 @@
 import { q } from "./utils/domHelpers";
 
-// Add AJAX functions here:
 export const getVenues = async () => {
   // Foursquare API Info
   const clientId = import.meta.env.SNOWPACK_PUBLIC_FOURSQUARE_CLIENT_ID;
@@ -32,7 +31,9 @@ export const getForecast = async () => {
   const openWeatherKey = import.meta.env.SNOWPACK_PUBLIC_OPENWEATHER_API_KEY;
   const weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 
-  const urlToFetch = `${weatherUrl}?&q=${q("input").value}&APPID=${openWeatherKey}`;
+  const urlToFetch = `${weatherUrl}?&q=${
+    q("input").value
+  }&APPID=${openWeatherKey}`;
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
