@@ -12,6 +12,7 @@ function executeSearch() {
   unhide(id("container"));
   unhide(q("footer"));
 
+  if (id("error-box")) q("body").removeChild(id("error-box"));
   clear(id("covid-advisory"));
   clear(id("destination"));
   clear(id("weather"));
@@ -22,8 +23,6 @@ function executeSearch() {
 
   q("input").value = "";
   q("input").placeholder = "Enter a new place";
-
-  return true;
 }
 
 q("form").addEventListener("submit", (e) => {

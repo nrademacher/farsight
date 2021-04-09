@@ -1,3 +1,4 @@
+import { renderErrorMessage } from "./renderFuncs";
 import { q } from "./utils/domHelpers";
 
 export const getCurrentCovidRate = async (country) => {
@@ -8,9 +9,11 @@ export const getCurrentCovidRate = async (country) => {
     if (response.ok) {
       const jsonResponse = await response.json();
       return jsonResponse.active / jsonResponse.population;
+    } else {
+      throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    renderErrorMessage(error.message);
   }
 };
 
@@ -31,9 +34,11 @@ export const getVenues = async () => {
         (item) => item.venue
       );
       return venues;
+    } else {
+      throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    renderErrorMessage(error.message);
   }
 };
 
@@ -50,8 +55,10 @@ export const getForecast = async () => {
     if (response.ok) {
       const jsonResponse = await response.json();
       return jsonResponse;
+    } else {
+      throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    renderErrorMessage(error.message);
   }
 };

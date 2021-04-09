@@ -1,10 +1,32 @@
-import { id, txtEl } from "./utils/domHelpers";
+import { el, id, q, txtEl } from "./utils/domHelpers";
 import {
   createAdvisoryHTML,
   createVenueHTML,
   createWeatherHTML,
 } from "./utils/htmlHelpers.js";
 import { getCurrentCovidRate } from "./getApiData";
+
+export const renderErrorMessage = (errorMsg) => {
+  if (errorMsg == "NetworkError when attempting to fetch resource.") {
+    errorMsg =
+      "Sorry, a network error occurred while fetching your result. Please try again in a bit.";
+  } else {
+    errorMsg =
+      "Sorry, an unexpected error occurred while fetching your result. Please try again in a bit.";
+  }
+  const errorBox = el(
+    "article",
+    "mb-6 p-6 text-lg bg-red-900 text-white font-bold",
+    "error-box"
+  );
+  errorBox.append(
+    txtEl(
+      "h2",
+      errorMsg
+    )
+  );
+  q("body").insertBefore(errorBox, q("header"));
+};
 
 export const renderForecast = (day) =>
   id("weather").append(createWeatherHTML(day));
