@@ -7,16 +7,17 @@ import {
 import { getCurrentCovidRate } from "./getApiData";
 
 export const renderErrorMessage = (errorMsg) => {
+  if (id("error-box")) return
   if (errorMsg == "NetworkError when attempting to fetch resource.") {
     errorMsg =
-      "Sorry, a network error occurred while fetching your result. Please try again in a bit.";
+      "Sorry, a network error occurred while getting your result. Please try again in a bit.";
   } else {
     errorMsg =
-      "Sorry, an unexpected error occurred while fetching your result. Please try again in a bit.";
+      "Sorry, an unexpected error occurred while getting your result. Please check your query and try again.";
   }
   const errorBox = el(
     "article",
-    "mb-6 p-6 text-lg bg-red-900 text-white font-bold",
+    "mb-6 p-6 w-full text-lg bg-red-900 text-white font-bold",
     "error-box"
   );
   errorBox.append(
