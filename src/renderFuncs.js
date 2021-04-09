@@ -1,10 +1,14 @@
 import { id, txtEl } from "./utils/domHelpers";
 import { createVenueHTML, createWeatherHTML } from "./utils/htmlHelpers.js";
 
+export const renderForecast = (day) =>
+  id("weather").append(createWeatherHTML(day));
+
 export const renderVenues = (venues) => {
   id("venues").append(
-    txtEl("h2", "Top Five Attractions", "font-heading text-4xl mb-5")
+    txtEl("h2", "Top Five Sights", "font-heading text-4xl mb-5")
   );
+
   [1, 2, 3, 4, 5].forEach((_, index) => {
     let venue = venues[index];
     const venueIcon = venue.categories[0].icon;
@@ -16,7 +20,7 @@ export const renderVenues = (venues) => {
     );
     id("venues").append(venueContent);
     const venueMap = L.map(`${venue.name}-map`).setView(
-      [venue.location.lat.toFixed(3), venue.location.lng.toFixed(2)],
+      [venue.location.lat, venue.location.lng],
       18
     );
     const mapBoxAccToken = import.meta.env.SNOWPACK_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -32,9 +36,8 @@ export const renderVenues = (venues) => {
         accessToken: mapBoxAccToken,
       }
     ).addTo(venueMap);
+    L.marker([venue.location.lat, venue.location.lng]).addTo(venueMap);
   });
+
   id("destination").textContent = `${venues[0].location.city}`;
 };
-
-export const renderForecast = (day) =>
-  id("weather").append(createWeatherHTML(day));
