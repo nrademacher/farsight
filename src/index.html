@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <title>Farsight</title>
+    <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -26,12 +27,12 @@
     class="grid content-center h-screen text-gray-900 text-center textShadow-sm subpixel-antialiased"
   >
     <header class="grid-center">
-      <h1 id="title" class="mb-6 font-heading text-6xl textShadow-lg">
+      <h1 id="title" class="mb-5 font-heading text-6xl textShadow-lg">
         Farsight
       </h1>
       <h2 id="subtitle" class="mb-4 text-center">
-        Discover new places and see whether the current Covid situation allows a
-        visit.
+        Search for a place, see it top sights, and check its current Covid
+        status.
       </h2>
       <form autocomplete="off">
         <input
@@ -49,16 +50,20 @@
       </form>
     </header>
     <main class="grid-center w-full" id="container" hidden>
+      <article id="covid-advisory"></article>
       <h2
-        class="mb-5 font-heading text-5xl textShadow-lg"
+        class="mb-6 font-heading text-6xl textShadow-lg"
         id="destination"
       ></h2>
       <section id="weather" class="grid-center w-full mb-4"></section>
       <section id="venues" class="grid-center w-full"></section>
     </main>
-    <footer class="text-center text-xs mt-8 mb-2" hidden>
+    <footer class="text-center text-xs mt-8 mb-4" hidden>
       Made with <span class="text-red-500">♥</span> in Bielefeld by
-      <a class="hover:underline" href="https://nikolayrademacher.net" target="_blank"
+      <a
+        class="hover:underline"
+        href="https://nikolayrademacher.net"
+        target="_blank"
         >Nikolay Rademacher</a
       >
     </footer>

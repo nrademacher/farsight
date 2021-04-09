@@ -1,12 +1,20 @@
 import { id, txtEl } from "./utils/domHelpers";
-import { createVenueHTML, createWeatherHTML } from "./utils/htmlHelpers.js";
+import {
+  createAdvisoryHTML,
+  createVenueHTML,
+  createWeatherHTML,
+} from "./utils/htmlHelpers.js";
+import { getCurrentCovidRate } from "./getApiData";
 
 export const renderForecast = (day) =>
   id("weather").append(createWeatherHTML(day));
 
-export const renderVenues = (venues) => {
+export const renderLocaleContent = async (venues) => {
+  const covidRate = await getCurrentCovidRate(venues[0].location.cc);
+  createAdvisoryHTML(covidRate, venues[0].location.country);
+
   id("venues").append(
-    txtEl("h2", "Top Five Sights", "font-heading text-4xl mb-5")
+    txtEl("h2", "Top Five Sights", "font-heading font-semibold text-3xl mb-5")
   );
 
   [1, 2, 3, 4, 5].forEach((_, index) => {

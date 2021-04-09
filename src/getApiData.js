@@ -1,24 +1,35 @@
 import { q } from "./utils/domHelpers";
 
+export const getCurrentCovidRate = async (country) => {
+  try {
+    const response = await fetch(
+      `https://disease.sh/v3/covid-19/countries/${country}`
+    );
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      return jsonResponse.active / jsonResponse.population;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getVenues = async () => {
-  // Foursquare API Info
   const clientId = import.meta.env.SNOWPACK_PUBLIC_FOURSQUARE_CLIENT_ID;
   const clientSecret = import.meta.env.SNOWPACK_PUBLIC_FOURSQUARE_CLIENT_SECRET;
   const fourSquareUrl = "https://api.foursquare.com/v2/venues/explore?near=";
 
-  const city = q("input").value;
+  const locale = q("input").value;
   const day = new Date().toISOString().split("T")[0].replace(/-/g, "");
-  const urlToFetch = `${fourSquareUrl}${city}&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=${day}`;
+  const urlToFetch = `${fourSquareUrl}${locale}&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=${day}`;
 
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       const venues = jsonResponse.response.groups[0].items.map(
         (item) => item.venue
       );
-      // console.log(venues);
       return venues;
     }
   } catch (error) {
@@ -38,7 +49,6 @@ export const getForecast = async () => {
     const response = await fetch(urlToFetch);
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       return jsonResponse;
     }
   } catch (error) {

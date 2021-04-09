@@ -1,6 +1,6 @@
 import { id, q, hide, unhide, clear } from "./utils/domHelpers.js";
 import { getForecast, getVenues } from "./getApiData";
-import { renderForecast, renderVenues } from "./renderFuncs";
+import { renderForecast, renderLocaleContent } from "./renderFuncs";
 
 function executeSearch() {
   q("body").classList.remove("h-screen");
@@ -12,11 +12,12 @@ function executeSearch() {
   unhide(id("container"));
   unhide(q("footer"));
 
+  clear(id("covid-advisory"));
   clear(id("destination"));
   clear(id("weather"));
   clear(id("venues"));
 
-  getVenues().then((venues) => renderVenues(venues));
+  getVenues().then((venues) => renderLocaleContent(venues));
   getForecast().then((forecast) => renderForecast(forecast));
 
   q("input").value = "";

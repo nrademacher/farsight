@@ -1,9 +1,9 @@
 {
-  "name": "webdev-starter",
-  "version": "0.0.4",
-  "description": "Boilerplate template for web apps and sites",
+  "name": "farsight",
+  "version": "1.0.0",
+  "description": "App for checking a locale's weather, sights, and Covid status",
   "main": "index.js",
-  "repository": "https://github.com/cxxiii/webdev-starter",
+  "repository": "https://github.com/cxxiii/farsight",
   "author": "Nikolay Rademacher",
   "license": "MIT",
   "private": true,
@@ -12,7 +12,6 @@
     "build": "snowpack build",
     "lint": "if [ -f .eslintrc.* ]; then eslint . --fix; else yarn setup:eslint && eslint . --fix; fi",
     "clean": "if [ -d build/ ]; then rm -r build/; fi",
-    "setup:react": "yarn add react react-dom && if [ ! -f src/App.jsx ]; then printf 'import React from \"react\";\n\nconst App = () => <p>Hello, React.</p>;\n\nexport default App;\n\n' > src/App.jsx; fi && mv src/index.js src/index.jsx && printf 'import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport App from \"./App\";\n\nReactDOM.render(<App />, document.getElementById(\"root\"));\n'$'\n'\"$(cat src/index.jsx)\" > src/index.jsx",
     "setup:eslint": "yarn add -D eslint && eslint --init"
   },
   "devDependencies": {
@@ -24,7 +23,6 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
     "autoprefixer": "^10.2.5",
-    "leaflet": "^1.7.1",
     "tailwindcss": "^2.1.1"
   }
 }
