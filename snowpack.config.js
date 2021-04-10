@@ -1,12 +1,13 @@
 module.exports = {
   mount: {
-    src: "/",
-    assets: "/"
+    src: '/',
+    assets: '/',
+    vendors: '/'
   },
-  plugins: [["@snowpack/plugin-postcss"], ["@snowpack/plugin-dotenv"]],
+  plugins: [['@snowpack/plugin-postcss'], ['@snowpack/plugin-dotenv']],
   optimize: {
     bundle: true,
     minify: true,
-    target: "es2018",
-  },
-};
+    target: 'es2018'
+  }
+}

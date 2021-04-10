@@ -11,27 +11,17 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <script src="leaflet/leaflet.js"></script>
   </head>
   <body
     class="grid-center h-screen text-gray-900 text-center textShadow-sm subpixel-antialiased transition-all duration-1000"
   >
     <header class="grid-center">
-      <h1 id="title" class="mb-5 font-heading text-6xl textShadow-lg">
-        Farsight
-      </h1>
-      <h2 id="subtitle" class="mb-4 text-center">
-        Search for a place to check its weather, top sights, and current Covid status.
+      <h1 class="mb-5 font-heading text-6xl textShadow-lg">Farsight</h1>
+      <h2 class="mb-4 text-center">
+        Search for a place to check its weather, top sights, and current Covid
+        status.
       </h2>
       <form autocomplete="off">
         <input
@@ -49,13 +39,13 @@
       </form>
     </header>
     <main class="grid-center w-full" id="container" hidden>
-      <article id="covid-advisory"></article>
+      <article class="content" id="covid-advisory"></article>
       <h2
-        class="mb-6 font-heading text-6xl textShadow-lg"
+        class="content mb-6 font-heading text-6xl textShadow-lg"
         id="destination"
       ></h2>
-      <section id="weather" class="grid-center w-full mb-4"></section>
-      <section id="venues" class="grid-center w-full"></section>
+      <section id="weather" class="content grid-center w-full mb-4"></section>
+      <section id="venues" class="content grid-center w-full"></section>
     </main>
     <footer class="text-center text-xs mt-8 mb-4" hidden>
       Made with <span class="text-red-500">♥</span> in Bielefeld by
