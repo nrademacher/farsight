@@ -1,4 +1,4 @@
-import { id, textEl } from './utils/domHelpers';
+import { id, textEl } from './utils/domUtils';
 import {
   createAdvisoryHTML,
   createVenueHTML,

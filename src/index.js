@@ -10,7 +10,7 @@ import {
   textEl,
   clAdd,
   clRm,
-} from './utils/domHelpers';
+} from './utils/domUtils';
 import { getForecast, getVenues } from './getApiData';
 import { renderForecast, renderLocaleContent } from './renderContent';
 import renderErrorMessage from './utils/renderErrorMessage';

@@ -1,6 +1,6 @@
 import {
   id, el, textEl, q,
-} from './domHelpers';
+} from './domUtils';
 
 const renderErrorMessage = (errorMsg) => {
   if (id('error-box')) return;

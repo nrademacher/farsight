@@ -1,6 +1,6 @@
 import {
   el, id, textEl, imgEl, clAdd,
-} from './domHelpers';
+} from './domUtils';
 import { kelvinToCelsius, kelvinToFahrenheit } from './miscHelpers';
 
 export function createAdvisoryHTML(covidRate, locale) {

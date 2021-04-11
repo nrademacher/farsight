@@ -1,4 +1,4 @@
-// Element shtmlElection utils
+// Element selection utils
 export const q = (query) => document.querySelector(query);
 
 export const qA = (query) => document.querySelectorAll(query);
@@ -8,7 +8,7 @@ export const id = (htmlElId) => document.getElementById(htmlElId);
 export const cn = (className) => document.getElementsByClassName(className);
 
 // Element manipulation utils
-// apply func used to operate on node lists if node lists passed
+// apply function used for operating on node lists if node lists passed
 const apply = (htmlElements, func, ...funcParams) => {
   if (htmlElements.length > 1) {
     [...htmlElements].forEach((htmlEl) => func(htmlEl, ...funcParams));
@@ -48,7 +48,7 @@ export const clAdd = (htmlEl, htmlElClass) => {
       elClass = elClass.split(' ');
       element.classList.add(...elClass);
     },
-    htmlElClass,
+    htmlElClass
   );
 };
 
@@ -59,7 +59,7 @@ export const clRm = (htmlEl, htmlElClass) => {
       elClass = elClass.split(' ');
       element.classList.remove(...elClass);
     },
-    htmlElClass,
+    htmlElClass
   );
 };
 
@@ -70,7 +70,7 @@ export const clRp = (htmlEl, htmlElCl1, htmlElCl2) => {
       element.classList.replace(elCl1, elCl2);
     },
     htmlElCl1,
-    htmlElCl2,
+    htmlElCl2
   );
 };
 
@@ -80,7 +80,7 @@ export const setText = (htmlEl, text) => {
     (element, elText) => {
       element.textContent = elText;
     },
-    text,
+    text
   );
 };
 
@@ -92,7 +92,7 @@ export const setImg = (htmlImgEl, htmlImgSrc, htmlImgAlt = htmlImgEl.alt) => {
       imgElement.alt = imgAlt;
     },
     htmlImgSrc,
-    htmlImgAlt,
+    htmlImgAlt
   );
 };
 
@@ -103,7 +103,7 @@ export const setAttr = (htmlEl, htmlElAttr, htmlElAttrVal) => {
       element[elAttr] = elAttrVal;
     },
     htmlElAttr,
-    htmlElAttrVal,
+    htmlElAttrVal
   );
 };
 
@@ -136,7 +136,7 @@ export const generate = (
   htmlElAmount,
   htmlElGenFunc,
   htmlElGenFuncParams,
-  htmlContainerEl = document.body,
+  htmlContainerEl = document.body
 ) => {
   apply(
     htmlContainerEl,
@@ -147,7 +147,7 @@ export const generate = (
     },
     htmlElAmount,
     htmlElGenFunc,
-    htmlElGenFuncParams,
+    htmlElGenFuncParams
   );
 };
 
@@ -158,6 +158,6 @@ export const copy = (htmlEl, htmlContainerEl = htmlEl.parentNode) => {
       const copiedEl = element.cloneNode(true);
       containerEl.append(copiedEl);
     },
-    htmlContainerEl,
+    htmlContainerEl
   );
 };
