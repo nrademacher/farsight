@@ -10,22 +10,22 @@ import {
   textEl,
   clAdd,
   clRm,
+  clRp,
 } from './utils/domUtils';
 import { getForecast, getVenues } from './getApiData';
 import { renderForecast, renderLocaleContent } from './renderContent';
 import renderErrorMessage from './utils/renderErrorMessage';
 
 function executeSearch() {
-  hide(qA('header :not(form, input, button)'));
   clRm(q('body'), 'h-screen');
+  hide(qA('header :not(form, input, button)'));
   clAdd(q('header'), 'mb-8');
-  clRm(q('input'), 'block');
-  clAdd(q('form'), 'space-x-4');
+  clRp(q('input'), 'block', 'mr-4');
 
   const loadingTxt = textEl(
     'h2',
     'Loading...',
-    'animate-pulse mb-6 font-heading text-xl',
+    'animate-pulse mb-6 font-heading text-xl'
   );
   q('body').insertBefore(loadingTxt, q('main'));
 
