@@ -1,4 +1,4 @@
-import { id, txtEl } from './utils/domHelpers';
+import { id, textEl } from './utils/domHelpers';
 import {
   createAdvisoryHTML,
   createVenueHTML,
@@ -13,7 +13,7 @@ export const renderLocaleContent = async (venues) => {
   createAdvisoryHTML(covidRate, venues[0].location.country);
 
   id('venues').append(
-    txtEl('h2', 'Top Five Sights', 'font-heading font-semibold text-3xl mb-5'),
+    textEl('h2', 'Top Five Sights', 'font-heading font-semibold text-3xl mb-5'),
   );
 
   [1, 2, 3, 4, 5].forEach((_, index) => {

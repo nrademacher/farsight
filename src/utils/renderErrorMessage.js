@@ -1,5 +1,5 @@
 import {
-  id, el, txtEl, q,
+  id, el, textEl, q,
 } from './domHelpers';
 
 const renderErrorMessage = (errorMsg) => {
@@ -15,7 +15,7 @@ const renderErrorMessage = (errorMsg) => {
     'mb-6 p-6 w-full text-lg bg-red-900 text-white font-bold',
     'error-box',
   );
-  errorBox.append(txtEl('h2', renderMsg));
+  errorBox.append(textEl('h2', renderMsg));
   q('body').insertBefore(errorBox, q('header'));
 };
 

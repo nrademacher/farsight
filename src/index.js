@@ -3,46 +3,37 @@ import {
   q,
   qA,
   cn,
-  apply,
   remove,
   hide,
   unhide,
   clear,
-  txtEl,
+  textEl,
   clAdd,
   clRm,
 } from './utils/domHelpers';
 import { getForecast, getVenues } from './getApiData';
-import {
-  renderForecast,
-  renderLocaleContent,
-} from './renderContent';
+import { renderForecast, renderLocaleContent } from './renderContent';
 import renderErrorMessage from './utils/renderErrorMessage';
 
 function executeSearch() {
-  // Transform header with search input to sit horizontally at top
-  apply(qA('header :not(form, input, button)'), hide);
+  hide(qA('header :not(form, input, button)'));
   clRm(q('body'), 'h-screen');
   clAdd(q('header'), 'mb-8');
   clRm(q('input'), 'block');
   clAdd(q('form'), 'space-x-4');
 
-  // Show loading indicator while content resolves
-  const loadingTxt = txtEl(
+  const loadingTxt = textEl(
     'h2',
     'Loading...',
     'animate-pulse mb-6 font-heading text-xl',
   );
   q('body').insertBefore(loadingTxt, q('main'));
 
-  // Remove any error message rendered from previous search
   if (id('error-box')) {
     remove(id('error-box'));
   }
-  // Clear content rendered from previous search
-  apply(cn('content'), clear);
+  clear(cn('content'));
 
-  // Show new content if API requests have successfully resolved
   Promise.all([
     getForecast().then((forecast) => renderForecast(forecast)),
     getVenues().then((venues) => renderLocaleContent(venues)),

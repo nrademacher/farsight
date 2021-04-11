@@ -1,82 +1,163 @@
-// Element selection helpers
+// Element shtmlElection utils
 export const q = (query) => document.querySelector(query);
 
 export const qA = (query) => document.querySelectorAll(query);
 
-export const id = (elId) => document.getElementById(elId);
+export const id = (htmlElId) => document.getElementById(htmlElId);
 
 export const cn = (className) => document.getElementsByClassName(className);
 
-// Element utility functions
-export function hide(el) {
-  return (el.hidden = true);
-}
-
-export function unhide(el) {
-  return (el.hidden = false);
-}
-
-export function clear(el) {
-  return (el.textContent = '');
-}
-
-export const remove = (el) => el.parentNode.removeChild(el);
-
-export const clAdd = (el, elClass) => {
-  elClass = elClass.split(' ');
-  el.classList.add(...elClass);
-};
-
-export const clRm = (el, elClass) => {
-  elClass = elClass.split(' ');
-  el.classList.remove(...elClass);
-};
-
-export const clRpl = (el, elCl1, elCl2) => el.classList.replace(elCl1, elCl2);
-
-export const apply = (elements, func, ...funcParams) => {
-  if (elements.length > 1) {
-    [...elements].forEach((el) => func(el, ...funcParams));
+// Element manipulation utils
+// apply func used to operate on node lists if node lists passed
+const apply = (htmlElements, func, ...funcParams) => {
+  if (htmlElements.length > 1) {
+    [...htmlElements].forEach((htmlEl) => func(htmlEl, ...funcParams));
   } else {
-    func(elements, ...funcParams);
+    func(htmlElements, ...funcParams);
   }
 };
 
-// Element creation helpers
-
-export const generate = (containerEl, amount, elGenFunc, ...elGenFunParams) => {
-  let i = amount;
-  while (i > 0) {
-    containerEl.append(elGenFunc(...elGenFunParams));
-    i -= 1;
-  }
+export const hide = (htmlEl) => {
+  apply(htmlEl, (element) => {
+    element.hidden = true;
+  });
 };
 
-export const copy = (el, containerEl = el.parentNode) => {
-  const copiedEl = el.cloneNode(true);
-  containerEl.append(copiedEl);
+export const unhide = (htmlEl) => {
+  apply(htmlEl, (element) => {
+    element.hidden = false;
+  });
 };
 
-export function el(tag, elClass, elId) {
+export const clear = (htmlEl) => {
+  apply(htmlEl, (element) => {
+    element.textContent = '';
+  });
+};
+
+export const remove = (htmlEl) => {
+  apply(htmlEl, (element) => {
+    element.parentNode.removeChild(element);
+  });
+};
+
+export const clAdd = (htmlEl, htmlElClass) => {
+  apply(
+    htmlEl,
+    (element, elClass) => {
+      elClass = elClass.split(' ');
+      element.classList.add(...elClass);
+    },
+    htmlElClass,
+  );
+};
+
+export const clRm = (htmlEl, htmlElClass) => {
+  apply(
+    htmlEl,
+    (element, elClass) => {
+      elClass = elClass.split(' ');
+      element.classList.remove(...elClass);
+    },
+    htmlElClass,
+  );
+};
+
+export const clRp = (htmlEl, htmlElCl1, htmlElCl2) => {
+  apply(
+    htmlEl,
+    (element, elCl1, elCl2) => {
+      element.classList.replace(elCl1, elCl2);
+    },
+    htmlElCl1,
+    htmlElCl2,
+  );
+};
+
+export const setText = (htmlEl, text) => {
+  apply(
+    htmlEl,
+    (element, elText) => {
+      element.textContent = elText;
+    },
+    text,
+  );
+};
+
+export const setImg = (htmlImgEl, htmlImgSrc, htmlImgAlt = htmlImgEl.alt) => {
+  apply(
+    htmlImgEl,
+    (imgElement, imgSrc, imgAlt = imgElement.alt) => {
+      imgElement.src = imgSrc;
+      imgElement.alt = imgAlt;
+    },
+    htmlImgSrc,
+    htmlImgAlt,
+  );
+};
+
+export const setAttr = (htmlEl, htmlElAttr, htmlElAttrVal) => {
+  apply(
+    htmlEl,
+    (element, elAttr, elAttrVal) => {
+      element[elAttr] = elAttrVal;
+    },
+    htmlElAttr,
+    htmlElAttrVal,
+  );
+};
+
+// Element creation utils
+export function el(tag, htmlElClass, htmlElId) {
   const htmlEl = document.createElement(tag);
-  if (elClass && typeof elClass === 'string') {
-    clAdd(htmlEl, elClass);
+  if (htmlElClass && typeof htmlElClass === 'string') {
+    clAdd(htmlEl, htmlElClass);
   }
-  if (elId) {
-    htmlEl.id = elId;
+  if (htmlElId) {
+    htmlEl.id = htmlElId;
   }
   return htmlEl;
 }
 
-export function txtEl(tag, txt, elClass, elId) {
-  const htmlEl = el(tag, elClass, elId);
+export function textEl(tag, txt, htmlElClass, htmlElId) {
+  const htmlEl = el(tag, htmlElClass, htmlElId);
   htmlEl.textContent = txt;
   return htmlEl;
 }
 
-export function imgEl(src, alt, elClass, elId) {
-  const img = el('img', elClass, elId);
+export function imgEl(src, alt, htmlElClass, htmlElId) {
+  const img = el('img', htmlElClass, htmlElId);
   img.setAttribute('src', src);
   img.setAttribute('alt', alt);
   return img;
 }
+
+export const generate = (
+  htmlElAmount,
+  htmlElGenFunc,
+  htmlElGenFuncParams,
+  htmlContainerEl = document.body,
+) => {
+  apply(
+    htmlContainerEl,
+    (containerEl = document.body, elAmount, elGenFunc, elGenFuncParams) => {
+      Array(elAmount)
+        .fill(1)
+        .forEach(() => containerEl.append(elGenFunc(...elGenFuncParams)));
+    },
+    htmlElAmount,
+    htmlElGenFunc,
+    htmlElGenFuncParams,
+  );
+};
+
+export const copy = (htmlEl, htmlContainerEl = htmlEl.parentNode) => {
+  apply(
+    htmlEl,
+    (element, containerEl = element.parentNode) => {
+      const copiedEl = element.cloneNode(true);
+      containerEl.append(copiedEl);
+    },
+    htmlContainerEl,
+  );
+};
