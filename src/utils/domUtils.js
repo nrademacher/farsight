@@ -132,6 +132,15 @@ export function imgEl(src, alt, htmlElClass, htmlElId) {
   return img;
 }
 
+export function linkEl(href, target, text, elClass) {
+  const element = document.createElement("a")
+  element.href = href
+  if (target) element.target = target
+  if (text) element.textContent = text
+  if (elClass) clAdd(element, elClass)
+  return element
+}
+
 export const generate = (
   htmlElAmount,
   htmlElGenFunc,
