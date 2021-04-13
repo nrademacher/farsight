@@ -1,19 +1,13 @@
-import { id, textEl } from './utils/domUtils';
-import {
-  createAdvisoryHTML,
-  createVenueHTML,
-  createWeatherHTML,
-} from './utils/htmlHelpers';
-import { getCurrentCovidRate } from './getApiData';
+import { id, textEl } from '../utils/domUtils';
+import { createAdvisoryHTML, createVenueHTML } from '../hooks/createHTML';
+import { getCurrentCovidRate } from '../utils/getApiData';
 
-export const renderForecast = (day) => id('weather').append(createWeatherHTML(day));
-
-export const renderLocaleContent = async (venues) => {
+async function renderLocaleContent(venues) {
   const covidRate = await getCurrentCovidRate(venues[0].location.cc);
   createAdvisoryHTML(covidRate, venues[0].location.country);
 
   id('venues').append(
-    textEl('h2', 'Top Five Sights', 'font-heading font-semibold text-3xl mb-5'),
+    textEl('h2', 'Top Five Sights', 'font-heading font-semibold text-3xl mb-5')
   );
 
   [1, 2, 3, 4, 5].forEach((_, index) => {
@@ -23,12 +17,12 @@ export const renderLocaleContent = async (venues) => {
     const venueContent = createVenueHTML(
       venue.name,
       venue.location,
-      venueImgSrc,
+      venueImgSrc
     );
     id('venues').append(venueContent);
     const venueMap = L.map(`${venue.name}-map`).setView(
       [venue.location.lat, venue.location.lng],
-      18,
+      18
     );
     const mapBoxAccToken = import.meta.env.SNOWPACK_PUBLIC_MAPBOX_ACCESS_TOKEN;
     L.tileLayer(
@@ -39,10 +33,12 @@ export const renderLocaleContent = async (venues) => {
         tileSize: 512,
         zoomOffset: -1,
         accessToken: mapBoxAccToken,
-      },
+      }
     ).addTo(venueMap);
     L.marker([venue.location.lat, venue.location.lng]).addTo(venueMap);
   });
 
   id('destination').textContent = `${venues[0].location.city}`;
-};
+}
+
+export default renderLocaleContent

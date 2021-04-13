@@ -1,7 +1,7 @@
 import {
   el, id, textEl, imgEl, clAdd,
-} from './domUtils';
-import { kelvinToCelsius, kelvinToFahrenheit } from './miscHelpers';
+} from '../utils/domUtils';
+import { kelvinToCelsius, kelvinToFahrenheit } from '../utils/miscHelpers';
 
 export function createAdvisoryHTML(covidRate, locale) {
   const advisoryBox = el(

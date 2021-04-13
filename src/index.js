@@ -12,9 +12,10 @@ import {
   clRm,
   clRp,
 } from './utils/domUtils';
-import { getForecast, getVenues } from './getApiData';
-import { renderForecast, renderLocaleContent } from './renderContent';
-import renderErrorMessage from './utils/renderErrorMessage';
+import { getForecast, getVenues } from './utils/getApiData';
+import renderForecast from "./components/renderForecast";
+import renderLocaleContent from "./components/renderLocaleContent";
+import renderErrorMessage from './hooks/renderErrorMessage';
 
 function executeSearch() {
   clRm(q('body'), 'h-screen');

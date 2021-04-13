@@ -1,5 +1,5 @@
-import { q } from './utils/domUtils';
-import renderErrorMessage from './utils/renderErrorMessage';
+import { q } from './domUtils';
+import renderErrorMessage from '../hooks/renderErrorMessage';
 
 export async function getCurrentCovidRate(country) {
   try {
