@@ -1,6 +1,6 @@
 import { id, textEl } from '../utils/domUtils';
-import { createAdvisoryHTML, createVenueHTML } from '../hooks/createHTML';
 import { getCurrentCovidRate } from '../utils/getApiData';
+import { createAdvisoryHTML, createVenueHTML } from '../hooks/createHTML';
 
 async function renderLocaleContent(venues) {
   const covidRate = await getCurrentCovidRate(venues[0].location.cc);
