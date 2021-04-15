@@ -13,8 +13,8 @@ import {
   clRp,
 } from './utils/domUtils';
 import { getForecast, getVenues } from './utils/getApiData';
-import renderForecast from "./components/renderForecast";
-import renderLocaleContent from "./components/renderLocaleContent";
+import renderForecast from './components/renderForecast';
+import renderLocaleContent from './components/renderLocaleContent';
 import renderErrorMessage from './hooks/renderErrorMessage';
 
 function executeSearch() {

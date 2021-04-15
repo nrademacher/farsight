@@ -26,13 +26,18 @@ export function createAdvisoryHTML(covidRate, locale) {
     advisory.textContent = `Caution: Could not find Covid incidence rate for ${locale}.`;
     clAdd(advisoryBox, 'text-red-900 bg-red-400 font-bold');
   }
-  const linkLocale = locale === 'United States' ? 'us' : locale;
+
+  const linkLocale =
+    locale === 'United States'
+      ? 'us'
+      : (linkLocale = locale.toLowerCase().replace(' ', '-'));
   const learnMore = linkEl(
     `https://www.worldometers.info/coronavirus/country/${linkLocale.toLowerCase()}`,
     '_blank',
     'Learn more.',
     'underline inline-block'
   );
+
   advisoryBox.append(advisory, learnMore);
   id('covid-advisory').append(advisoryBox);
 }
@@ -60,7 +65,7 @@ export function createWeatherHTML(currentDay) {
       `${kelvinToCelsius(currentDay.main.temp)} °C  /  ${kelvinToFahrenheit(
         currentDay.main.temp
       )} °F`,
-      'mb-2 font-light'
+      'mb-2'
     ),
     textEl(
       'p',
