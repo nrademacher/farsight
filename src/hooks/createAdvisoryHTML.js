@@ -1,7 +1,6 @@
-import { el, id, textEl, imgEl, clAdd, linkEl } from '../utils/domUtils';
-import { kelvinToCelsius, kelvinToFahrenheit } from '../utils/miscHelpers';
+import { el, id, clAdd, linkEl } from '../utils/domUtils';
 
-export function createAdvisoryHTML(covidRate, locale) {
+function createAdvisoryHTML(covidRate, locale) {
   const advisoryBox = el(
     'article',
     'mb-6 p-6 rounded-none md:rounded-lg text-base md:text-lg space-x-1'
@@ -40,42 +39,4 @@ export function createAdvisoryHTML(covidRate, locale) {
   id('covid-advisory').append(advisoryBox);
 }
 
-export function createVenueHTML(name, location, iconSource) {
-  const venueContainer = el('article', 'grid-center w-full mb-12');
-  venueContainer.append(
-    textEl('h3', name, 'font-heading text-2xl textShadow-lg mb-3'),
-    imgEl(iconSource, name, 'filter drop-shadow-lg'),
-    textEl('p', location.formattedAddress[0], 'my-4'),
-    el(
-      'div',
-      'h-60 md:h-80 w-full md:w-3/4 lg:w-1/2 rounded-none md:rounded-lg filter drop-shadow-lg',
-      `${name}-map`
-    )
-  );
-  return venueContainer;
-}
-
-export function createWeatherHTML(currentDay) {
-  const weatherContainer = el('article', 'grid-center w-full mb-4');
-  weatherContainer.append(
-    textEl(
-      'p',
-      `${kelvinToCelsius(currentDay.main.temp)} °C  /  ${kelvinToFahrenheit(
-        currentDay.main.temp
-      )} °F`,
-      'mb-2'
-    ),
-    textEl(
-      'p',
-      `${currentDay.weather[0].description.replace(/^\w/, (c) =>
-        c.toUpperCase()
-      )}`
-    ),
-    imgEl(
-      `https://openweathermap.org/img/wn/${currentDay.weather[0].icon}@2x.png`,
-      'weather icon',
-      'filter drop-shadow-lg'
-    )
-  );
-  return weatherContainer;
-}
+export default createAdvisoryHTML

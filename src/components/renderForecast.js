@@ -1,4 +1,4 @@
-import { createWeatherHTML } from '../hooks/createHTML';
+import createWeatherHTML from '../hooks/createWeatherHTML';
 
 const renderForecast = (day) =>
   document.getElementById('weather').append(createWeatherHTML(day));
