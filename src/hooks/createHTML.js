@@ -28,9 +28,7 @@ export function createAdvisoryHTML(covidRate, locale) {
   }
 
   const linkLocale =
-    locale === 'United States'
-      ? 'us'
-      : (linkLocale = locale.toLowerCase().replace(' ', '-'));
+    locale === 'United States' ? 'us' : locale.toLowerCase().replace(' ', '-');
   const learnMore = linkEl(
     `https://www.worldometers.info/coronavirus/country/${linkLocale.toLowerCase()}`,
     '_blank',
