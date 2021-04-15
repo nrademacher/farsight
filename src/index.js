@@ -4,7 +4,6 @@ import {
   qA,
   cn,
   remove,
-  hide,
   unhide,
   clear,
   textEl,
@@ -19,7 +18,7 @@ import renderErrorMessage from './hooks/renderErrorMessage';
 
 function executeSearch() {
   clRm(q('body'), 'h-screen');
-  hide(qA('header :not(form, input, button)'));
+  clAdd(qA('header :not(form, input, button)'), 'hidden');
   clAdd(q('header'), 'mb-8');
   clRp(q('input'), 'block', 'mr-2');
   clAdd(q('input'), 'md:mr-4');

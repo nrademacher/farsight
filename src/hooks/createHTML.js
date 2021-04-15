@@ -4,7 +4,7 @@ import { kelvinToCelsius, kelvinToFahrenheit } from '../utils/miscHelpers';
 export function createAdvisoryHTML(covidRate, locale) {
   const advisoryBox = el(
     'article',
-    'mb-6 p-6 rounded-none md:rounded-lg text-lg space-x-1'
+    'mb-6 p-6 rounded-none md:rounded-lg text-base md:text-lg space-x-1'
   );
   const advisory = el('h3', 'inline-block');
   if (covidRate >= 0.005) {
