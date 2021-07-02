@@ -15,23 +15,23 @@
     <script src="leaflet/leaflet.js"></script>
   </head>
   <body
-    class="grid-center h-screen text-sm md:text-base text-gray-900 text-center textShadow-sm subpixel-antialiased transition-all duration-1000"
+    class="h-screen text-sm subpixel-antialiased text-center text-gray-900 transition-all duration-1000 grid-center md:text-base textShadow-sm"
   >
     <header class="px-2 md:px-0 grid-center">
       <div class="flex mb-5">
-        <h1 class="font-heading text-5xl md:text-6xl textShadow-lg mr-4">
+        <h1 class="mr-4 text-5xl font-heading md:text-6xl textShadow-lg">
           Farsight
         </h1>
         <span class="flex items-end mb-1">
           <img
             src="telescope-svgrepo-com.svg"
             alt="Telescope icon"
-            class="icons w-4 md:w-8 mr-3"
+            class="mr-3 w-4 icons md:w-8"
           />
           <img
             src="globe-svgrepo-com.svg"
             alt="Globe icon"
-            class="icons w-8 md:w-12"
+            class="w-8 icons md:w-12"
           />
         </span>
       </div>
@@ -42,28 +42,28 @@
       <form id="search" autocomplete="off">
         <input
           type="text"
-          class="mt-0 block text-center text-lg md:text-xl px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+          class="block px-0.5 mt-0 text-lg text-center border-0 border-b-2 border-gray-200 md:text-xl focus:ring-0 focus:border-black"
           placeholder="Enter a place"
           required
         />
         <button
-          class="mt-6 text-white text-base md:text-lg bg-gray-900 hover:bg-white hover:text-gray-900 border-2 border-gray-900 border-solid font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          class="py-2 px-4 mt-6 text-base font-semibold text-white bg-gray-900 rounded md:text-lg hover:bg-gray-600"
           type="submit"
         >
           Discover
         </button>
       </form>
     </header>
-    <main class="px-2 md:px-0 grid-center w-full" id="container" hidden>
+    <main class="px-2 w-full md:px-0 grid-center" id="container" hidden>
       <article class="content" id="covid-advisory"></article>
       <h2
-        class="content mb-6 font-heading text-6xl textShadow-lg"
+        class="mb-6 text-6xl content font-heading textShadow-lg"
         id="destination"
       ></h2>
-      <section id="weather" class="content grid-center w-full mb-4"></section>
-      <section id="venues" class="content grid-center w-full"></section>
+      <section id="weather" class="mb-4 w-full content grid-center"></section>
+      <section id="venues" class="w-full content grid-center"></section>
     </main>
-    <footer class="px-2 md:px-0 text-center text-xs mt-8 mb-4" hidden>
+    <footer class="px-2 mt-8 mb-4 text-xs text-center md:px-0" hidden>
       Made with <span class="text-red-500">♥</span> in Bielefeld by
       <a
         class="hover:underline"
